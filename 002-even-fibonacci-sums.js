@@ -1,21 +1,17 @@
-(function () {
-  'use strict';
+var addEvenFibonacciSums = function (upperLimit, term1, term2, sum) {
+  term1 = term1 || 0;
+  term2 = term2 || 1;
+  sum = sum || 0;
 
-  var fibs = [1, 2];
-
-  while (fibs[fibs.length - 1] <= 4000000) {
-    fibs.push(fibs[fibs.length - 1] + fibs[fibs.length - 2]);
-  };
-
-  var sum = 0;
-
-  for (var i = 0; i < fibs.length; i++) {
-    if (fibs[i] % 2 == 0) {
-      sum += fibs[i];
+  if ((term1 + term2) > upperLimit) {
+    console.log(sum);
+    return sum;
+  } else {
+    if ((term1 + term2) % 2 === 0) {
+      sum += term1 + term2;
     }
-  };
+    addEvenFibonacciSums(upperLimit, term2, (term1 + term2), sum);
+  }
+};
 
-  console.log(sum);
-  return sum;
-
-})();
+addEvenFibonacciSums(4000000);
