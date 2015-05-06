@@ -25,17 +25,22 @@ describe('Project Euler', function () {
       assert.equal(typeof PE.largestPalindrome, 'function');
     });
     it('the answer should be 906609', function () {
-      assert.equal(PE.largestPalindrome(PE.threeDigitProducts()), '906609');
+      assert.equal(PE.largestPalindrome(PE.threeDigitProducts()), 906609);
     });
   });
   describe('Problem 5', function () {
     it('should have a smallestDivisibleByArr method', function () {
       assert.equal(typeof PE.smallestDivisibleByArr, 'function');
     });
-    // it('the answer should be 232792560', function () {
-    //   var oneThruTwenty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-    //   assert.equal(PE.smallestDivisibleByArr(oneThruTwenty), '232792560');
-    // });
+    it('smallestDivisibleByArr([1...10]) should equal 2520', function () {
+      var oneThruTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      assert.equal(PE.smallestDivisibleByArr(oneThruTen), 2520);
+    });
+    it('the answer should be 232792560', function (done) {
+      var oneThruTwenty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+      assert.equal(PE.smallestDivisibleByArr(oneThruTwenty), '232792560');
+      done();
+    });
     // takes a VERY LONG TIME to run (several minutes)!
   });
 });
