@@ -1,5 +1,5 @@
-var assert = require("assert");
-var PE = require("../solutions.js");
+var assert = require('assert');
+var PE = require('../solutions.js');
 
 describe('Project Euler', function () {
   describe('Problem 2', function () {
@@ -9,7 +9,6 @@ describe('Project Euler', function () {
     });
     it('addEvenFibonacciSums(4000000) should equal 4613732', function () {
       var result = PE.addEvenFibonacciSums(4000000);
-      console.log(result);
       assert.equal(result, 4613732);
     });
   });
