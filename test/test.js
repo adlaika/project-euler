@@ -2,6 +2,8 @@ var assert = require('assert');
 var PE = require('../solutions.js');
 
 describe('Project Euler', function () {
+  var oneThruTen = PE.range(1, 10);
+  var oneThruOneHundred = PE.range(1, 100);
   describe('Problem 2', function () {
     it('should have an addEvenFibonacciSums method', function () {
       assert.equal(typeof PE, 'object');
@@ -33,14 +35,26 @@ describe('Project Euler', function () {
       assert.equal(typeof PE.smallestDivisibleByArr, 'function');
     });
     it('smallestDivisibleByArr([1...10]) should equal 2520', function () {
-      var oneThruTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
       assert.equal(PE.smallestDivisibleByArr(oneThruTen), 2520);
     });
-    it('the answer should be 232792560', function (done) {
+    it('the answer should be 232792560', function () {
       var oneThruTwenty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
       assert.equal(PE.smallestDivisibleByArr(oneThruTwenty), '232792560');
-      done();
     });
-    // takes a VERY LONG TIME to run (several minutes)!
+  });
+  describe('Problem 6', function () {
+    it('should sum the squares of the first ten natural numbers', function () {
+      assert.equal(PE.sumSquares(oneThruTen), 385);
+    });
+    it('should square the sum of the first ten natural numbers', function () {
+      assert.equal(PE.squareSum(oneThruTen), 3025);
+    });
+    it('should find the difference between the sum of the squares of the first ten natural numbers and the square of their sum', function () {
+      assert.equal(PE.squareSumDiff(oneThruTen), 2640);
+    });
+    it('should Find the difference between the sum of the squares of the first one hundred natural numbers and the square of their sum', function () {
+      assert.equal(PE.squareSumDiff(oneThruOneHundred), 25164150);
+    });
+
   });
 });

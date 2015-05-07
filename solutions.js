@@ -4,6 +4,14 @@
   var PE = {}; //for export
 
   //helper functions
+  PE.range = function (start, stop) {
+    var result = [];
+    for (var i = start; i <= stop; i++) {
+      result.push(i);
+    };
+    return result;
+  };
+
   PE.reverse = function (s) {
     return s.split('').reverse().join('');
   };
@@ -79,6 +87,25 @@
       return lcm(a, b);
     }));
   };
+
+  //problem 6
+  PE.sumSquares = function (arr) {
+    return arr.reduce(function (total, current) {
+      return total + (current * current);
+    });
+  };
+
+  PE.squareSum = function (arr) {
+    var sum = arr.reduce(function (total, current) {
+      return total + current;
+    });
+    return sum * sum;
+  };
+
+  PE.squareSumDiff = function (arr) {
+    return PE.squareSum(arr) - PE.sumSquares(arr);
+  }
+
 
   module.exports = PE;
 
