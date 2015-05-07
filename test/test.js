@@ -17,7 +17,7 @@ describe('Project Euler', function () {
     });
     it('the final element in primeFactors(600851475143) should equal 6857', function () {
       var results = PE.primeFactors(600851475143);
-      assert.equal(results[regsults.length - 1], '6857');
+      assert.equal(results[results.length - 1], '6857');
     });
   });
   describe('Problem 4', function () {
@@ -36,11 +36,11 @@ describe('Project Euler', function () {
       var oneThruTen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
       assert.equal(PE.smallestDivisibleByArr(oneThruTen), 2520);
     });
-    // it('the answer should be 232792560', function (done) {
-    //   var oneThruTwenty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-    //   assert.equal(PE.smallestDivisibleByArr(oneThruTwenty), '232792560');
-    //   done();
-    // });
-    // // takes a VERY LONG TIME to run (several minutes)!
+    it('the answer should be 232792560', function (done) {
+      var oneThruTwenty = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+      assert.equal(PE.smallestDivisibleByArr(oneThruTwenty), '232792560');
+      done();
+    });
+    // takes a VERY LONG TIME to run (several minutes)!
   });
 });

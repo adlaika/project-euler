@@ -65,43 +65,20 @@
     return largest;
   };
 
-  //problem 005
-  // PE.smallestDivisibleByArr = function (arr) {
-  //   var isDivisibleByArr = function (num, arr) {
-  //     var divisible = true;
-  //     arr.forEach(function (x) {
-  //       if (num % x !== 0) {
-  //         divisible = false;
-  //       }
-  //     });
-  //     return divisible;
-  //   };
-
-  //   for (var i = 2; true; i++) {
-  //     if (isDivisibleByArr(i, arr)) {
-  //       return i;
-  //     }
-  //   }
-  // };
-
+  //problem 5
   PE.smallestDivisibleByArr = function (arr) {
-    var pFactors = {};
-    arr.forEach(function (n) {
-      pFactors[n] = PE.primeFactors(n);
-    });
-    console.log('prime factors: ' + JSON.stringify(pFactors));
-
-    var primeCounts = {};
-
-    for (var p in pFactors) {
-      pFactors[p].forEach(function (n) {
-        primeCounts[n] ? primeCounts[n]++ : primeCounts[n] = 1; //
-      });
+    var gcd = function (a, b) {
+      return (!b) ? a : gcd(b, a % b);
     };
-    console.log('number of each prime factor of each prime factor: ' + JSON.stringify(primeCounts));
-  };
 
-  PE.smallestDivisibleByArr([8, 9, 21]);
+    var lcm = function (a, b) {
+      return (a * b) / gcd(a, b);
+    }
+
+    return (arr.reduce(function (a, b) {
+      return lcm(a, b);
+    }));
+  };
 
   module.exports = PE;
 
