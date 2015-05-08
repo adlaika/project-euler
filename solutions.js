@@ -4,6 +4,22 @@
   var PE = {}; //for export
 
   //helper functions
+  PE.numToArr = function (n) {
+    return (n + '').split('').map(Number);
+  };
+
+  PE.isPrime = function (n) {
+    if (n === 0 || n === 1) {
+      return false;
+    }
+    for (var i = 2; i < n; i++) {
+      if (n % i === 0) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   PE.range = function (start, stop) {
     var result = [];
     for (var i = start; i <= stop; i++) {
@@ -106,7 +122,34 @@
     return PE.squareSum(arr) - PE.sumSquares(arr);
   }
 
+  //problem 7
+  PE.getNextPrime = function (n) {
+    for (n; !PE.isPrime(n); n++) {};
+    return n;
+  };
+
+  PE.getPrimes = function (numOfPrimes) {
+    var results = [];
+    for (var i = 0; results.length < numOfPrimes; i++) {
+      if (PE.isPrime(i)) {
+        results.push(i);
+      }
+    };
+    return results;
+  };
+
+  //problem 8
+  PE.getAdjDigits = function (numOfDigits, start, number) {
+    var result = "";
+    for (var i = start; i < start + numOfDigits; i++) {
+      result = result + number[i];
+    }
+    return result;
+  };
+
+  PE.getGreatestAdjDigits = function (n, number) {
+
+  };
 
   module.exports = PE;
-
 })();
