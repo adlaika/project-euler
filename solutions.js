@@ -140,16 +140,44 @@
 
   //problem 8
   PE.getAdjDigits = function (numOfDigits, start, number) {
+    var start = start || 0;
     var result = "";
     for (var i = start; i < start + numOfDigits; i++) {
-      result = result + number[i];
+      if (number[i] !== undefined) {
+        result = result + number[i];
+      }
     }
     return result;
   };
 
-  PE.getGreatestAdjDigits = function (n, number) {
-
+  PE.getPossibleAdjDigits = function (numOfDigits, number) {
+    var possibles = [];
+    for (var i = 0; i < number.length + numOfDigits - 1; i++) {
+      var currentAdjDigits = PE.getAdjDigits(numOfDigits, i, number);
+      if (currentAdjDigits.indexOf(0) === -1) {
+        possibles.push(currentAdjDigits);
+      }
+    }
+    return possibles;
   };
+
+  PE.addDigits = function (str) {
+    var nums = PE.numToArr(str);
+    return nums.reduce(function (total, add) {
+      return total += add;
+    });
+  };
+
+  PE.greatestDigitSum = function (arr) {
+    var resultIndex = -1;
+    arr.forEach(function (elem) {
+
+    });
+    return arr[resultIndex];
+  };
+
+  console.log(PE.getPossibleAdjDigits(1, "12345"));
+
 
   module.exports = PE;
 })();

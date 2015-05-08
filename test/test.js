@@ -99,9 +99,20 @@ describe('Project Euler', function () {
     it('should return an array of n adjacent digits at index', function () {
       assert.equal(PE.getAdjDigits(1, 0, bigNum), 7);
       assert.equal(PE.getAdjDigits(4, 3, bigNum), 6717);
+      assert.equal(PE.getAdjDigits(4, 4, "12345"), 5);
+    });
+    it('should return all possible adjacent digit combinations without 0', function () {
+      assert.deepEqual(PE.getPossibleAdjDigits(1, "12"), ['1', '2']);
+      assert.deepEqual(PE.getPossibleAdjDigits(0, "12"), ['']);
+      assert.deepEqual(PE.getPossibleAdjDigits(1, "0000"), []);
+      assert.deepEqual(PE.getPossibleAdjDigits(2, "012034506"), ['12', '34', '45', '6', '']);
+    });
+    it('should add digits', function () {
+      assert.equal(PE.addDigits('123'), 6);
+      assert.equal(PE.addDigits('0'), 0);
     });
     it('should find the n adjacent digits with the greatest sum', function () {
-      assert.equal(PE.getGreatestAdjDigits(4, bigNum), [9, 9, 8, 9]);
+      //assert.equal(PE.greatestDigitSum([12, 34, 56, 78]), 78);
     });
   });
 });
