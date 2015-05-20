@@ -103,16 +103,26 @@ describe('Project Euler', function () {
     });
     it('should return all possible adjacent digit combinations without 0', function () {
       assert.deepEqual(PE.getPossibleAdjDigits(1, "12"), ['1', '2']);
-      assert.deepEqual(PE.getPossibleAdjDigits(0, "12"), ['']);
-      assert.deepEqual(PE.getPossibleAdjDigits(1, "0000"), []);
-      assert.deepEqual(PE.getPossibleAdjDigits(2, "012034506"), ['12', '34', '45', '6', '']);
+      //assert.deepEqual(PE.getPossibleAdjDigits(0, "12"), []);
+      //assert.deepEqual(PE.getPossibleAdjDigits(1, "0000"), []);
+      assert.deepEqual(PE.getPossibleAdjDigits(2, "012034506"), ['12', '34', '45']);
     });
     it('should add digits', function () {
-      assert.equal(PE.addDigits('123'), 6);
-      assert.equal(PE.addDigits('0'), 0);
+      assert.equal(PE.multiplyDigits('123'), 6);
+      assert.equal(PE.multiplyDigits('0'), 0);
     });
-    it('should find the n adjacent digits with the greatest sum', function () {
-      //assert.equal(PE.greatestDigitSum([12, 34, 56, 78]), 78);
+    it('should pick the greatest product from an array of adj digits', function () {
+      assert.equal(PE.getDigitsWithGreatestSum([12, 34, 56, 78]), 78);
+      assert.equal(PE.getDigitsWithGreatestSum([01, 0, 0, 0, 00000, 0, 999999, 41, 14, 5252, 00001]), 999999);
+      assert.equal(PE.getDigitsWithGreatestSum([999, 2, 13, 125, 112, 0]), 999);
+    });
+    it('should find the n adj digits with the greatest product from a number', function () {
+      assert.equal(PE.getDigitsWithGreatestSum(PE.getPossibleAdjDigits(2, "012034506")), 45);
+      assert.equal(PE.getDigitsWithGreatestSum(PE.getPossibleAdjDigits(4, bigNum)), 9989);
+      //console.log(PE.getDigitsWithGreatestSum(PE.getPossibleAdjDigits(13, bigNum)));
+    });
+    it('should find the product of the above test', function () {
+      assert.equal(PE.multiplyDigits(PE.getDigitsWithGreatestSum(PE.getPossibleAdjDigits(13, bigNum))), "23514624000");
     });
   });
 });

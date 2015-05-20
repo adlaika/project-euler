@@ -150,9 +150,10 @@
     return result;
   };
 
+  //PE.getPossibleAdjDigits(2, "012034506") ==> ['12', '34', '45', '6']
   PE.getPossibleAdjDigits = function (numOfDigits, number) {
     var possibles = [];
-    for (var i = 0; i < number.length + numOfDigits - 1; i++) {
+    for (var i = 0; i < number.length + 1 - numOfDigits; i++) {
       var currentAdjDigits = PE.getAdjDigits(numOfDigits, i, number);
       if (currentAdjDigits.indexOf(0) === -1) {
         possibles.push(currentAdjDigits);
@@ -161,23 +162,31 @@
     return possibles;
   };
 
-  PE.addDigits = function (str) {
+  PE.multiplyDigits = function (str) {
     var nums = PE.numToArr(str);
-    return nums.reduce(function (total, add) {
-      return total += add;
+    return nums.reduce(function (total, mult) {
+      return total *= mult;
     });
   };
 
-  PE.greatestDigitSum = function (arr) {
+  PE.getDigitsWithGreatestSum = function (arr) {
     var resultIndex = -1;
-    arr.forEach(function (elem) {
-
+    var sums = arr.map(PE.multiplyDigits)
+    var biggest = 0;
+    sums.reduce(function (prev, curr) {
+      if (prev > biggest) {
+        biggest = prev;
+      } else if (curr > biggest) {
+        biggest = curr;
+      }
     });
+    resultIndex = sums.indexOf(biggest);
     return arr[resultIndex];
   };
 
-  console.log(PE.getPossibleAdjDigits(1, "12345"));
-
+  var test = PE.getPossibleAdjDigits(2, "012034506")
+    // console.log('GPAD: ' + JSON.stringify(test));
+    // console.log(PE.getDigitsWithGreatestSum(test.slice(0, 3)));
 
   module.exports = PE;
 })();
