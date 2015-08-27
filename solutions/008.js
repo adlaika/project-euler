@@ -1,57 +1,8 @@
 (function (exports) {
   'use strict';
 
-  //problem 5
-  exports.smallestDivisibleByArr = function (arr) {
+  var helpers = require('../solutions/helpers.js');
 
-    var gcd = function (a, b) {
-      return (!b) ? a : gcd(b, a % b);
-    };
-
-    var lcm = function (a, b) {
-      return (a * b) / gcd(a, b);
-    }
-
-    return (arr.reduce(function (a, b) {
-      return lcm(a, b);
-    }));
-  };
-
-  //problem 6
-  exports.sumSquares = function (arr) {
-    return arr.reduce(function (total, current) {
-      return total + (current * current);
-    });
-  };
-
-  exports.squareSum = function (arr) {
-    var sum = arr.reduce(function (total, current) {
-      return total + current;
-    });
-    return sum * sum;
-  };
-
-  exports.squareSumDiff = function (arr) {
-    return exports.squareSum(arr) - exports.sumSquares(arr);
-  }
-
-  //problem 7
-  exports.getNextPrime = function (n) {
-    for (n; !exports.isPrime(n); n++) {};
-    return n;
-  };
-
-  exports.getPrimes = function (numOfPrimes) {
-    var results = [];
-    for (var i = 0; results.length < numOfPrimes; i++) {
-      if (exports.isPrime(i)) {
-        results.push(i);
-      }
-    };
-    return results;
-  };
-
-  //problem 8
   exports.getAdjDigits = function (numOfDigits, start, number) {
     var start = start || 0;
     var result = "";
@@ -76,7 +27,7 @@
   };
 
   exports.multiplyDigits = function (str) {
-    var nums = exports.numToArr(str);
+    var nums = helpers.numToArr(str);
     return nums.reduce(function (total, mult) {
       return total *= mult;
     });
