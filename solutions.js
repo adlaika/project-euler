@@ -3,6 +3,7 @@
 
   //problem 5
   exports.smallestDivisibleByArr = function (arr) {
+
     var gcd = function (a, b) {
       return (!b) ? a : gcd(b, a % b);
     };
